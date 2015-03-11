@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Overcart_Redmi>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Overcart_Redmi>
+    </modules>
+</config>
