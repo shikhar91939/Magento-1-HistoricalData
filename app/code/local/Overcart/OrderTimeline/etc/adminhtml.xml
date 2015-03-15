@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+    <!-- We are defining a new menu item for the admin panel. -->
+    <menu>
+
+        <!--
+        First, create a top-level menu item, which will appear alongside CMS
+        -->
+        <overcart_ordertimeline translate="title"
+                module="overcart_ordertimeline">
+            <title>Brand Directory</title>
+            <sort_order>75</sort_order>
+            <depends>
+                <module>Overcart_OrderTimeline</module>
+            </depends>
+
+            <!-- Under this top-level menu, create a child menu item. -->
+            <children>
+                <brand translate="title"
+                        module="overcart_ordertimeline">
+                    <title>Manage Brands</title>
+                    <sort_order>10</sort_order>
+
+                    <!--
+                    When the menu is clicked, take the user here.
+                    -->
+                 <action>overcart_ordertimeline_admin/brand</action>
+
+                </brand>
+            </children>
+        </overcart_ordertimeline>
+    </menu>
+
+    <!-- Define ACL for access to these menu items. -->
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <overcart_ordertimeline translate="title"
+                            module="overcart_ordertimeline">
+                        <title>Brand Directory</title>
+                        <sort_order>75</sort_order>
+                        <children>
+                            <brand translate="title"
+                                    module="overcart_ordertimeline">
+                                <title>Manage Brands</title>
+                            </brand>
+                        </children>
+                    </overcart_ordertimeline>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

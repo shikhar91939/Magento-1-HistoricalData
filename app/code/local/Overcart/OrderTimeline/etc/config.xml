@@ -1,41 +1,69 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Overcart_OrderTimeline>
+        <Overcart_ordertimEline>
             <!--
-            This is the version number that our module is currently at. In
-            order for setup scripts to run, their version number must be less
-            than or equal to this value.
+            This is the version number that our module is currently at.
+            In order for setup scripts to run, their version number must
+            be less than or equal to this value.
 
             As we add upgrade scripts, we increment this value. The next time
             your Magento instance is accessed, Magento will compare values in
-            the DB table 'core_resource' against this value. If the DB is
-            lower, it will attempt to run any setup scripts for the module
-            and then update the database table to match this value.
+            the database table 'core_resource' against this value. If the
+            database is lower, it will attempt to run any setup scripts for
+            the module and then update the database table to match this value.
             -->
             <version>0.0.1</version>
         </Overcart_OrderTimeline>
     </modules>
     <global>
+
+        <!--
+        add an adminhtml block definition
+        -->
+        <blocks>
+            <overcart_ordertimeline_adminhtml>
+               <class>Overcart_OrderTimeline_Block_Adminhtml</class>
+            </overcart_ordertimeline_adminhtml>
+        </blocks>
+
+        <!--
+        Add a helper definition for use in adminhtml.xml menu translation.
+        -->
+        <helpers>
+            <overcart_ordertimeline>
+                <class>Overcart_OrderTimeline_Helper</class>
+            </overcart_ordertimeline>
+        </helpers>
+
         <models>
 
             <!--
-            This is the Model alias referred to in install-0.0.1.php.
+            This is the model alias referred to in install-0.0.1.php.
             -->
-            <Overcart_ordertimeline>
+            <overcart_ordertimeline>
+                <!--
+                This tells Magento where to find models for this module.
+                -->
+                <class>Overcart_OrderTimeline_Model</class>
 
                 <!--
-                This tells Magento where to find
-                resource materials for this module.
+                This tells Magento where to find resource
+                materials for this module.
                 -->
       <resourceModel>overcart_ordertimeline_resource</resourceModel>
 
-            </Overcart_ordertimeline>
+            </overcart_ordertimeline>
 
             <!--
-            This alias must match the above <resourceModel/> value.
+            This alias must match the <resourceModel/> value above.
             -->
             <overcart_ordertimeline_resource>
+                <!--
+                This tells Magento where to find resource
+                models for this module.
+                -->
+                <class>Overcart_OrderTimeline_Model_Resource</class>
 
                 <entities>
 
@@ -45,7 +73,7 @@
                     <brand>
 
                         <!--
-                        This is the actual name of the database table.
+                            This is the name of the database table itself.
                         -->
                         <table>overcart_ordertimeline_brand</table>
 
@@ -81,16 +109,45 @@
                 </setup>
 
                 <!--
-                This is only relevant if you have
-        multiple database connections.
+                This is relevant only if you have multiple database connections.
                 -->
                 <connection>
                     <use>core_setup</use>
                 </connection>
 
-            </smashingmagazine_branddirectory_setup>
+            </overcart_ordertimeline_setup>
 
         </resources>
 
     </global>
+
+    <!-- Add a router for access to our admin panel controller. -->
+    <admin>
+        <routers>
+
+            <!-- This is the alias for this router. -->
+            <overcart_ordertimeline_admin>
+
+                <!--
+                This basically informs Magento to use the
+                admin scope for requests to this router.
+                -->
+                <use>admin</use>
+
+                <args>
+                    <!--
+                    This tells Magento where to find
+                    adminhtml controllers for this module.
+                    -->
+                   <module>Overcart_OrderTimeline_Adminhtml</module>
+
+                    <!-- This is the term used in the actual URL. -->
+                    <frontName>brand-directory-admin</frontName>
+                </args>
+
+            </overcart_ordertimeline_admin>
+
+        </routers>
+    </admin>
+
 </config>
