@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Overcart_OrderTimeline>
+            <!--
+            This is the version number that our module is currently at. In
+            order for setup scripts to run, their version number must be less
+            than or equal to this value.
+
+            As we add upgrade scripts, we increment this value. The next time
+            your Magento instance is accessed, Magento will compare values in
+            the DB table 'core_resource' against this value. If the DB is
+            lower, it will attempt to run any setup scripts for the module
+            and then update the database table to match this value.
+            -->
+            <version>0.0.1</version>
+        </Overcart_OrderTimeline>
+    </modules>
+    <global>
+        <models>
+
+            <!--
+            This is the Model alias referred to in install-0.0.1.php.
+            -->
+            <Overcart_ordertimeline>
+
+                <!--
+                This tells Magento where to find
+                resource materials for this module.
+                -->
+      <resourceModel>overcart_ordertimeline_resource</resourceModel>
+
+            </Overcart_ordertimeline>
+
+            <!--
+            This alias must match the above <resourceModel/> value.
+            -->
+            <overcart_ordertimeline_resource>
+
+                <entities>
+
+                    <!--
+                    This is the table alias referred to in install-0.0.1.php.
+                    -->
+                    <brand>
+
+                        <!--
+                        This is the actual name of the database table.
+                        -->
+                        <table>overcart_ordertimeline_brand</table>
+
+                    </brand>
+
+                </entities>
+
+            </overcart_ordertimeline_resource>
+
+        </models>
+
+        <resources>
+
+            <!--
+            This must match our folder name in the module sql folder.
+            -->
+            <overcart_ordertimeline_setup>
+
+                <setup>
+
+                    <!--
+                    This defines which module the setup
+                    scripts in this location belong to.
+                    -->
+                    <module>Overcart_OrderTimeline</module>
+
+                    <!--
+                    In each setup script, this
+                    value determines the class of $this.
+                    -->
+                    <class>Mage_Core_Model_Resource_Setup</class>
+
+                </setup>
+
+                <!--
+                This is only relevant if you have
+        multiple database connections.
+                -->
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+
+            </smashingmagazine_branddirectory_setup>
+
+        </resources>
+
+    </global>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Overcart_OrderTimeline>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Overcart_OrderTimeline>
+    </modules>
+</config>
