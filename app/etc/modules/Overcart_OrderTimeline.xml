@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Overcart_OrderTimeline>
-            <active>true</active>
+            <active>false</active>
             <codePool>local</codePool>
         </Overcart_OrderTimeline>
     </modules>
